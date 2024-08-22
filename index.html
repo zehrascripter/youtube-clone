@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Caveat', cursive;
+            font-family: 'Dancing Script', cursive;
+            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins' sans-serif;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .main {
+            display: flex;
+        }
+
+        .header {
+            position: fixed;
+            background-color: black;
+        }
+
+        .nav {
+            height: 80px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin-left: 25px;
+        }
+
+        .icon i {
+            font-size: 25px;
+            color: white;
+        }
+
+        .image {
+            margin-left: 20px;
+        }
+
+        .search {
+            margin-left: 250px;
+        }
+
+        .search input {
+            height: 40px;
+            width: 500px;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            opacity: 0.5;
+            border-radius: 30px;
+            padding-left: 20px;
+        }
+
+        .search input::placeholder {
+            color: white;
+        }
+
+        .mic {
+            margin-left: 20px;
+        }
+
+        .mic i {
+            color: rgb(236, 229, 229);
+            height: 40px;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(91, 85, 85);
+            border-radius: 50%;
+            font-size: 20px;
+        }
+
+        .create {
+            margin-left: 300px;
+        }
+
+        .create i {
+            color: white;
+            font-size: 22px;
+        }
+
+        .ball {
+            margin-left: 25px;
+        }
+
+        .ball i {
+            color: white;
+            font-size: 22px;
+        }
+
+        .profile {
+            margin-left: 20px;
+        }
+
+        .profile i {
+            color: white;
+            height: 40px;
+            width: 40px;
+            border-radius: 50px;
+            background-color: rgb(79, 75, 75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slidebar {
+            height: 100vh;
+            width: 220px;
+            background-color: transparent;
+            padding-left: 25px;
+            margin-top: 90px;
+        }
+
+        .home a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .home i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .shorts {
+            margin-top: 20px;
+        }
+
+        .shorts i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .shorts a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .subscription {
+            margin-top: 20px;
+        }
+
+        .subscription i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .subscription a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .line {
+            height: 2px;
+            width: 200px;
+            background-color: #fff;
+            margin-top: 25px;
+            opacity: o.5;
+        }
+
+        .you {
+            margin-top: 25px;
+        }
+
+        .you i {
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        .you a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .your-channel {
+            margin-top: 25px;
+        }
+
+        .your-channel i {
+            color: #fff;
+            height: 15px;
+            width: 16px;
+            border: 2px solid #fff;
+        }
+
+        .your-channel a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 25px;
+            margin-left: 25px;
+
+        }
+
+        .history {
+            margin-top: 20px;
+        }
+
+        .history i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .history a {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 25px;
+        }
+
+        .your-video {
+            margin-top: 20px;
+        }
+
+        .your-video i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .your-video a {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 25px;
+        }
+
+        .watch-later {
+            margin-top: 20px;
+        }
+
+        .watch-later i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .watch-later a {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 25px;
+        }
+
+        .down {
+            margin-top: 20px;
+        }
+
+        .down i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .down a {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 25px;
+        }
+
+        .subs {
+            margin-top: 20px;
+        }
+
+        .subs a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 25px;
+        }
+
+        .life {
+            margin-top: 20px;
+        }
+
+        .life i {
+            color: #fff;
+        }
+
+        .life a {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 25px;
+        }
+
+        .explore {
+            margin-top: 20px;
+        }
+
+        .explore a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 25px;
+        }
+
+        .trending {
+            margin-top: 20px;
+        }
+
+        .trending a {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 25px;
+        }
+
+        .trending i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .setting {
+            margin-top: 20px;
+        }
+
+        .setting i {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .setting a {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 25px;
+        }
+
+        .desc {
+            color: #fff;
+            font-size: 15px;
+            margin-top: 20px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+
+        .disc a {
+            text-decoration: none;
+            color: #fff;
+            opacity: 0.5;
+            font-size: 15px;
+        }
+
+        .main-content {
+            margin-top: 100px;
+        }
+
+        button {
+            background-color: rgb(67, 62, 62);
+            color: #fff;
+            margin: 0 5px;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #fff;
+            color: black;
+        }
+
+        .frwd {
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        .frwd i {
+            padding: 10px;
+            padding-left: 20px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .frwd i:hover {
+            background-color: rgb(67, 62, 62);
+            border-radius: 20px;
+
+        }
+
+        .page {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            /* height: 250px; */
+            width: 350px;
+            margin: 20px 20px;
+        }
+
+        .vid iframe {
+            border-radius: 10px;
+            width: 100%;
+            height: 220px;
+
+        }
+
+        .para {
+            margin-top: 10px;
+            display: flex;
+            width: 100%;
+        }
+
+        .para .log img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50px;
+        }
+
+        .para .contex {
+            margin-left: 10px;
+            color: #fff;
+        }
+
+        .para .icn i {
+            margin-top: 10px;
+            color: white;
+            margin-left: 150px;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav">
+            <div class="icon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="image">
+                <img src="logo.png" height="60px">
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="mic">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
+            <div class="create">
+                <i class="fa-solid fa-video"></i>
+            </div>
+            <div class="ball">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="slidebar">
+            <div class="home">
+                <i class="fa-solid fa-house"></i>
+                <a href="#">Home</a>
+            </div>
+            <div class="shorts">
+                <i class="fa-solid fa-music"></i>
+                <a href="#">Shorts</a>
+            </div>
+            <div class="subscription">
+                <i class="fa-brands fa-youtube"></i>
+                <a href="#">Subscriptions</a>
+            </div>
+            <div class="line"></div>
+            <div class="you">
+                <a href="#">You</a>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="your-channel">
+                <i class="fa-regular fa-user"></i>
+                <a href="#">Your Channel</a>
+            </div>
+            <div class="history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <a href="#">History</a>
+            </div>
+            <div class="your-video">
+                <i class="fa-solid fa-video"></i>
+                <a href="#">Your Video</a>
+            </div>
+            <div class="watch-later">
+                <i class="fa-regular fa-clock"></i>
+                <a href="#">Watch Later</a>
+            </div>
+            <div class="down">
+                <i class="fa-solid fa-chevron-down"></i>
+                <a href="#">Show More</a>
+            </div>
+            <div class="line"></div>
+            <div class="subs">
+                <a href="#">Subscriptions</a>
+            </div>
+            <div class="life">
+                <i class="fa-solid fa-user"></i>
+                <a href="#">Penavercity</a>
+            </div>
+            <div class="life">
+                <i class="fa-solid fa-user"></i>
+                <a href="#">Infonet</a>
+            </div>
+            <div class="life">
+                <i class="fa-solid fa-user"></i>
+                <a href="#">Coders</a>
+            </div>
+            <div class="life">
+                <i class="fa-solid fa-user"></i>
+                <a href="#">Apna Collage</a>
+            </div>
+            <div class="line"></div>
+            <div class="explore">
+                <a href="#">Explore</a>
+            </div>
+            <div class="trending">
+                <i class="fa-solid fa-fire"></i>
+                <a href="#">Trending</a>
+            </div>
+            <div class="trending">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href="#">Shopping</a>
+            </div>
+            <div class="trending">
+                <i class="fa-solid fa-music"></i>
+                <a href="#">Music</a>
+            </div>
+            <div class="trending">
+                <i class="fa-solid fa-film"></i>
+                <a href="#">Films</a>
+            </div>
+            <div class="trending">
+                <i class="fa-solid fa-life-ring"></i>
+                <a href="#">Live</a>
+            </div>
+            <div class="trending">
+                <i class="fa-solid fa-headset"></i>
+                <a href="#">Gaming</a>
+            </div>
+            <div class="line"></div>
+            <div class="setting">
+                <i class="fa-solid fa-gear"></i>
+                <a href="#">Settings</a>
+            </div>
+            <div class="setting">
+                <i class="fa-solid fa-flag"></i>
+                <a href="#">Report history</a>
+            </div>
+            <div class="setting">
+                <i class="fa-solid fa-circle-info"></i>
+                <a href="#">Help</a>
+            </div>
+            <div class="setting">
+                <i class="fa-solid fa-message"></i>
+                <a href="#">Send feedback</a>
+            </div>
+            <div class="line"></div>
+            <div class="desc">
+                About press Copyright
+                <br>
+                Contact us creator Developer
+                <br> <br>
+                Terms Privacy Policy & Safety
+                <br>
+                How YouTube works
+                <br>
+                Test new features
+                <br> <br>
+                <a href="#"> © 2024 Google LLC </a>
+                <br> <br>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="btn">
+                <button>All</button>
+                <button>Music</button>
+                <button>Religous recitation</button>
+                <button>Mixes</button>
+                <button>Indian pop music</button>
+                <button>Computer programmin</button>
+                <button>Lo-fi</button>
+                <button>News</button>
+                <button>Jukebox</button>
+                <button>Pakistani dramas</button>
+                <button>Chill-out music</button>
+                <span class="frwd"><i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+
+
+            <div class="page">
+                <div class="card">
+                    <div class="vid"><iframe src="https://www.youtube.com/embed/_5krCmptVgo?si=vWyNAAIv2OBA-YAP"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/penaverse.png" alt=""></div>
+                        <div class="contex">PIAIC GenAI Classes</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe src="https://www.youtube.com/embed/gXAiL5WCXhQ?si=MqRhrarCLqINRG6n"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/quran.png" alt=""></div>
+                        <div class="contex">Sureh Rehman <br> Best Qari</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe src="https://www.youtube.com/embed/w1U6SB6s0yo?si=6z4f3igR9ZfiN2L6"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/hasi.png" alt=""></div>
+                        <div class="contex">Rendom facts around the world</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe src="https://www.youtube.com/embed/EgDmCbhmstU?si=-1WemkfJ5p6uhXar"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="para">
+                        <div class="log"><img src="./images/codes.jfif" alt=""></div>
+                        <div class="contex">JavaScript logics</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe src="https://www.youtube.com/embed/4qPBIzP86l4?si=7o-i_PFpbOOIDen1"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/news.png" alt=""></div>
+                        <div class="contex">Haq Khateeb be-naqab</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe src="https://www.youtube.com/embed/28QvSs2_zec?si=pgf8tyH0PjZnTluK"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/brain.jfif" alt=""></div>
+                        <div class="contex">Brain Power</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid">
+                        <iframe src="https://www.youtube.com/embed/--VK6lxb4jI?si=L_k_ses6blIR5ye7"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="para">
+                        <div class="log"><img src="./images/infonet.png" alt=""></div>
+                        <div class="contex">Screen Recoding</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/jwErAY9QjMA?si=7FVbfThtGo3DOfH4"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/music.jfif" alt=""></div>
+                        <div class="contex">Music Mashups</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/1MSEYp-hSv4?si=C8Ir_utTmdqBi8FD"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/music.jfif" alt=""></div>
+                        <div class="contex">Kidnapped</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe width="560" height="315" src="https://www.youtube.com/embed/r3bFQ_zh9aQ?si=t3QLk3mq0aiVGbQN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/mrbeen.jfif" alt=""></div>
+                        <div class="contex">Khuda sy mohobbat</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe src="https://www.youtube.com/embed/_5krCmptVgo?si=vWyNAAIv2OBA-YAP"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/penaverse.png" alt=""></div>
+                        <div class="contex">PIAIC GenAI Classes</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe src="https://www.youtube.com/embed/_5krCmptVgo?si=vWyNAAIv2OBA-YAP"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/penaverse.png" alt=""></div>
+                        <div class="contex">PIAIC GenAI Classes</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe src="https://www.youtube.com/embed/_5krCmptVgo?si=vWyNAAIv2OBA-YAP"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/penaverse.png" alt=""></div>
+                        <div class="contex">PIAIC GenAI Classes</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe width="560" height="315" src="https://www.youtube.com/embed/cT80cPwSHMY?si=4XCETBsvNWh3Rit5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/penaverse.png" alt=""></div>
+                        <div class="contex">Complete Docker Installation</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="vid"><iframe width="560" height="315" src="https://www.youtube.com/embed/FMrtSHAAPhM?si=Zqgu4V4O7bS6qSuX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="para">
+                        <div class="log"><img src="./images/music.jfif" alt=""></div>
+                        <div class="contex">Relaxing Music</div>
+                        <div class="icn"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+                </div>s
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
